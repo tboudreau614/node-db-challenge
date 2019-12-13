@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Projects = require('./resources.js');
 
-router.get('/', (req, res) => {
+router.get('/projects', (req, res) => {
     Projects.find()
     .then(projects => {
       projects = projects.map((project) => {
@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
     })
   })
 
-  router.post('/', (req, res) => {
+  router.post('/projects', (req, res) => {
     Projects.insert(req.body)
     .then(project => {
       project.completed = !!project.completed
